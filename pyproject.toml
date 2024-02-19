@@ -1,0 +1,31 @@
+[project]
+name = "fastui-ai"
+version = "0.1.0"
+description = "Add your description here"
+authors = [{ name = "Shroominic", email = "contact@shroominic.com" }]
+dependencies = ["funcchain>=0.3.1", "fastui[fastapi]>=0.5.2"]
+readme = "README.md"
+requires-python = ">= 3.10"
+license = { text = "MIT" }
+
+[project.scripts]
+hello = "fastui_ai:hello"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "mypy>=1.8.0",
+    "ruff>=0.2.2",
+    "uvicorn>=0.27.1",
+    "rich>=13.7.0",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fastui_ai"]
