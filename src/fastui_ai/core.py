@@ -15,7 +15,7 @@ UI_ROOT = "/ui"
 
 app = FastAPI()
 
-ui = APIRouter(prefix=UI_ROOT, tags=["UI"])
+ui = APIRouter(prefix=UI_ROOT)
 
 
 @ui.get("/", response_model=FastUI, response_model_exclude_none=True)
