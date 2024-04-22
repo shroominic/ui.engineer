@@ -6,4 +6,6 @@ wheels/
 *.egg-info
 .venv
 .python-version
-.requirements-dev.lock
+requirements-dev.lock
+requirements.lock
+.env
