@@ -1,7 +1,7 @@
 [project]
 name = "uiengineer"
 version = "0.0.1"
-description = "Generative UI"
+description = "AI Rendered UI"
 authors = [{ name = "Shroominic", email = "contact@shroominic.com" }]
 dependencies = [
     "funcchain>=0.3.1",
@@ -9,11 +9,11 @@ dependencies = [
     "langchain-groq>=0.1.2",
 ]
 readme = "README.md"
-requires-python = ">= 3.10"
+requires-python = ">= 3.12"
 license = { text = "MIT" }
 
 [project.scripts]
-uie = "uiengineer.app:main"
+uiengineer = "uiengineer.app:main"
 
 [build-system]
 requires = ["hatchling"]
@@ -26,7 +26,6 @@ dev-dependencies = [
     "ruff>=0.2.2",
     "uvicorn>=0.27.1",
     "rich>=13.7.0",
-    "funcchain @ file:///Users/fungus/dev/funcchain",
 ]
 
 [tool.hatch.metadata]
