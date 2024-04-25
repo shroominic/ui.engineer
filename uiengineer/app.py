@@ -6,7 +6,7 @@ from fastui import components as c, events as e
 from langchain_groq import ChatGroq
 from typing import Annotated
 
-from .simple_fastui import AnyComponent as _AnyComponent, render
+from .simple_fastui import AnyComponent as _AnyComponent, patch
 
 funcchain.settings.llm = ChatGroq(model="llama3-70b-8192")
 funcchain.settings.console_stream = True
@@ -51,7 +51,7 @@ async def show(app_name: str, action: str | None = None) -> list[AnyComponent]:
         state = await update_app(app_name, repr(state), action)
 
     db[app_name] = state
-    return render(state, app_name)
+    return patch(state, app_name)
 
 
 @app.post("/api/{app_name}", response_model=FastUI, response_model_exclude_none=True)
