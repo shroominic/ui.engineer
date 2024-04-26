@@ -13,5 +13,11 @@ uiengineer
 ## Dev setup
 
 ```bash
+uv pip install -r pyproject.toml
+```
+
+or
+
+```bash
 rye sync
 ```
