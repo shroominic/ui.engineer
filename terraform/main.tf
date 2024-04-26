@@ -4,7 +4,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "rg" {
   name     = "ui-engineer-rg"
-  location = "UK South"
+  location = "East US"
 }
 
 resource "azurerm_service_plan" "plan" {
