@@ -74,16 +74,20 @@ async def index() -> list[AnyComponent]:
             components=[
                 c.PageTitle(text="👨🏼‍🔬 UI Engineer"),
                 c.Paragraph(
-                    text="This is a playground for the ai rendered user interfaces."
+                    text="Explore the capabilities of AI-driven user interfaces."
                 ),
                 c.Form(
                     form_fields=[
-                        c.FormFieldInput(name="app_name", title="App Description"),
+                        c.FormFieldInput(
+                            name="app_name",
+                            title="Enter App Name",
+                            placeholder="Type your app name here...",
+                        ),
                     ],
                     submit_url="",
                 ),
             ],
-            class_name="container",
+            class_name="container mt-5",
         )
     ]
 
