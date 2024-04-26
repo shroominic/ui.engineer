@@ -9,3 +9,5 @@ wheels/
 requirements-dev.lock
 requirements.lock
 .env
+*.tfvars
+.terraform*
