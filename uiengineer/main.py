@@ -6,10 +6,9 @@ from fastui import components as c, events as e
 from langchain_groq import ChatGroq
 from typing import Annotated
 
-from .simple_fastui import AnyComponent as _AnyComponent, patch
+from .components import AnyComponent as _AnyComponent, patch
 
 funcchain.settings.llm = ChatGroq(model="llama3-70b-8192")
-funcchain.settings.console_stream = True
 
 app = FastAPI()
 
@@ -107,13 +106,12 @@ async def html_landing() -> HTMLResponse:
 
 
 def main():
-    try:
-        import uvicorn, webbrowser  # noqa
+    import uvicorn, webbrowser  # noqa
 
-        webbrowser.open("http://127.0.0.1:8000/")
-        uvicorn.run(app)
-    except ImportError:
-        print("missing uvicorn, do pip install uvicorn")
+    funcchain.settings.console_stream = True
+
+    webbrowser.open("http://127.0.0.1:8000/")
+    uvicorn.run(app)
 
 
 if __name__ == "__main__":
