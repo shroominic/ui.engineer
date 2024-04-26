@@ -19,7 +19,8 @@ class Component(BaseModel, ABC):
     class_name: str = Field(description="Optional bootstrap class names for styling.")
 
     @abstractmethod
-    def to_fastui(self, **kwargs: str) -> FastUIComponent: ...
+    def to_fastui(self, **kwargs: str) -> FastUIComponent:
+        ...
 
 
 class Text(Component):
@@ -81,9 +82,9 @@ class InputField(Component):
                 c.FormFieldInput(
                     name=self.label,
                     title=self.placeholder,
-                    class_name=self.class_name,
                 ),
             ],
+            class_name=self.class_name + "p-2",
         )
 
 
