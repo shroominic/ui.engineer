@@ -3,8 +3,16 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "ui-engineer-rg"
+  name     = "ui-engineer"
   location = "East US"
+}
+
+variable "groq_api_key" {
+  sensitive   = true
+}
+
+variable "langchain_api_key" {
+  sensitive   = true
 }
 
 resource "azurerm_service_plan" "plan" {
@@ -40,15 +48,6 @@ resource "azurerm_linux_web_app" "app" {
   https_only = true
 }
 
-variable "groq_api_key" {
-  sensitive   = true
-}
-
-variable "langchain_api_key" {
-  sensitive   = true
-}
-
 output "public_ip" {
-  value = azurerm_linux_web_app.app.outbound_ip_addresses
-  description = "The public IP addresses associated with the app service."
+  value = azurerm_linux_web_app.app.default_hostname
 }
