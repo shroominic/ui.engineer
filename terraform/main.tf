@@ -7,14 +7,12 @@ resource "azurerm_resource_group" "rg" {
   location = "UK South"
 }
 
-// CONTAINER APP
-
 resource "azurerm_service_plan" "plan" {
   name                = "ui-engineer-plan"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   os_type             = "Linux"
-  sku_name            = "P1v2"
+  sku_name            = "B2"  # use F1 for free tier
 }
 
 resource "azurerm_linux_web_app" "app" {
@@ -22,8 +20,6 @@ resource "azurerm_linux_web_app" "app" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   service_plan_id     = azurerm_service_plan.plan.id
-  public_network_access_enabled = true
-  https_only = true
 
   site_config {
     application_stack {
@@ -34,23 +30,21 @@ resource "azurerm_linux_web_app" "app" {
 
   app_settings = {
     "WEBSITES_PORT" = "8000"
-    "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
     "LANGCHAIN_TRACING_V2" = "true"
     "LANGCHAIN_PROJECT" = "ui-engineer"
     "LANGCHAIN_API_KEY" = var.langchain_api_key
     "GROQ_API_KEY" = var.groq_api_key
   }
+
+  public_network_access_enabled = true
+  https_only = true
 }
 
-// VARIABLES
-
 variable "groq_api_key" {
-  type        = string
   sensitive   = true
 }
 
 variable "langchain_api_key" {
-  type        = string
   sensitive   = true
 }
 
